@@ -1,0 +1,301 @@
+@import url('https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600&display=swap');
+
+* {
+  font-family: 'Geist', sans-serif;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+.container {
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE/Edge */
+}
+
+.container::-webkit-scrollbar {
+  display: none; /* Chrome/Safari */
+}
+
+body {
+ background: linear-gradient(180deg, rgb(20, 20, 20) 0%, rgb(26, 26, 26) 100%);
+}
+
+/* ── Mobile first (base) ── */
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  padding: 16px;
+  overflow-y: auto;
+}
+
+.container > div {
+  width: 100%;
+  min-height: 30vh;
+}
+
+.div-one {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+  background-color: rgba(6, 16, 26, 0.562);
+}
+
+.div-one h2 + p {
+  margin-top: -10px;
+}
+
+.title, p {
+  color: white;
+}
+
+p {
+  margin-top: 5px !important;
+}
+
+.budget-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 3%;
+  gap: 15px;
+  width: 100% !important;
+  height: auto !important;
+}
+
+.total-budget {
+  background-color: rgb(0, 35, 65);
+  width: 100%;
+  height: 80px;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 0 10px;
+}
+
+.total-budget h4 {
+  color: white;
+}
+
+.total-amount {
+  color: green;
+}
+
+.stat-row {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  width: 100%;
+}
+
+.stat-box {
+  flex: 1 !important;
+  width: auto !important;
+  height: 105px !important;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  border: none !important;
+}
+
+.income-box {
+  background-color: rgb(0, 35, 65);
+}
+
+.expense-box {
+  background-color: rgb(0, 35, 65);
+}
+
+.stat-box h4 {
+  color: white;
+  font-size: 1rem;
+  font-weight: 500;
+}
+
+.income-amount {
+  color: green;
+  font-size: 1.1rem;
+  font-weight: 600;
+}
+
+.expense-amount {
+  color: red;
+  font-size: 1.1rem;
+  font-weight: 600;
+}
+
+.div-two {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 16px;
+  background-color: rgba(6, 16, 26, 0.562);
+}
+
+.add-post {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  width: 100%;
+}
+
+.type-buttons {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+}
+
+.type-btn {
+  flex: 1;
+  padding: 10px;
+  background-color: rgb(0, 35, 65);
+  border: none;
+  color: white;
+  border-radius: 8px;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+.active-income {
+  border-color: green;
+  color: green;
+}
+
+.active-expense {
+  border-color: red;
+  color: red;
+}
+
+.form-container {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.form-input {
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px rgb(77, 77, 77) solid;
+  background-color: rgb(0, 35, 65);
+  color: white;
+  font-size: 1rem;
+  outline: none;
+  width: 100%;
+}
+
+.form-input::placeholder {
+  color: rgba(255, 255, 255, 0.4);
+}
+
+.submit-btn {
+  padding: 12px;
+  border-radius: 8px;
+  border: none;
+  background-color: rgb(34, 197, 94);
+  color: white;
+  font-size: 1rem;
+  cursor: pointer;
+  width: 100%;
+}
+
+.div-three {
+  display: flex;
+  flex-direction: column;
+  padding: 16px;
+  background-color: rgba(6, 16, 26, 0.562);
+}
+
+.no-transactions {
+  color: white;
+}
+
+/* ── Tablet (768px+) ── */
+@media (min-width: 768px) {
+  .container > div {
+    width: 60vw;
+  }
+
+  .total-budget {
+    height: 100px;
+  }
+
+  .submit-btn {
+    width: auto;
+    align-self: flex-end;
+    padding: 12px 32px;
+  }
+}
+
+/* ── Desktop (1024px+) ── */
+@media (min-width: 1024px) {
+  .container {
+    padding: 32px;
+    gap: 16px;
+  }
+
+  .container > div {
+    width: 40vw;
+  }
+
+  .total-budget {
+    height: 120px;
+  }
+
+  .stat-box {
+    height: 120px !important;
+  }
+
+  .type-btn {
+    font-size: 1.1rem;
+    padding: 12px;
+  }
+
+  .form-input {
+    font-size: 1.1rem;
+    padding: 12px;
+  }
+
+  .submit-btn {
+    font-size: 1.1rem;
+    padding: 14px 40px;
+  }
+}
+
+/* ── Large Desktop (1440px+) ── */
+@media (min-width: 1440px) {
+  .container > div {
+    width: 30vw;
+  }
+
+  .total-budget {
+    height: 140px;
+  }
+
+  .stat-box {
+    height: 140px !important;
+  }
+
+  .type-buttons {
+    height: 60px;
+  }
+
+  .submit-btn {
+    margin-top: 10px;
+  }
+
+  h4 {
+    font-size: 1.3rem;
+  }
+
+  .total-amount {
+    font-size: 1.2rem;
+  }
+}
