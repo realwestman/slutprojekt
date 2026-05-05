@@ -1,5 +1,14 @@
 @import url('https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600&display=swap');
 
+:root {
+  --main-color: rgb(0, 35, 65);
+  --bg-color:rgba(6, 16, 26, 0.562);
+}
+
+body {
+   overflow-y: auto;
+}
+
 * {
   font-family: 'Geist', sans-serif;
   box-sizing: border-box;
@@ -8,26 +17,24 @@
 }
 
 .container {
-  scrollbar-width: none; /* Firefox */
-  -ms-overflow-style: none; /* IE/Edge */
+  scrollbar-width: none;
+  -ms-overflow-style: none;
 }
 
 .container::-webkit-scrollbar {
-  display: none; /* Chrome/Safari */
+  display: none;
 }
 
 body {
  background: linear-gradient(180deg, rgb(20, 20, 20) 0%, rgb(26, 26, 26) 100%);
 }
 
-/* ── Mobile first (base) ── */
 .container {
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 10px;
   padding: 16px;
-  overflow-y: auto;
 }
 
 .container > div {
@@ -41,7 +48,7 @@ body {
   align-items: center;
   justify-content: center;
   padding: 16px;
-  background-color: rgba(6, 16, 26, 0.562);
+  background-color: var(--bg-color);
 }
 
 .div-one h2 + p {
@@ -67,7 +74,7 @@ p {
 }
 
 .total-budget {
-  background-color: rgb(0, 35, 65);
+  background-color: var(--main-color);
   width: 100%;
   height: 80px;
   border-radius: 10px;
@@ -107,11 +114,11 @@ p {
 }
 
 .income-box {
-  background-color: rgb(0, 35, 65);
+  background-color: var(--main-color);
 }
 
 .expense-box {
-  background-color: rgb(0, 35, 65);
+   background-color: var(--main-color);
 }
 
 .stat-box h4 {
@@ -137,7 +144,7 @@ p {
   flex-direction: column;
   align-items: center;
   padding: 16px;
-  background-color: rgba(6, 16, 26, 0.562);
+  background-color: var(--bg-color);
 }
 
 .add-post {
@@ -156,7 +163,7 @@ p {
 .type-btn {
   flex: 1;
   padding: 10px;
-  background-color: rgb(0, 35, 65);
+   background-color: var(--main-color);
   border: none;
   color: white;
   border-radius: 8px;
@@ -183,8 +190,8 @@ p {
 .form-input {
   padding: 10px;
   border-radius: 8px;
-  border: 1px rgb(77, 77, 77) solid;
-  background-color: rgb(0, 35, 65);
+  border: none;
+   background-color: var(--main-color);
   color: white;
   font-size: 1rem;
   outline: none;
@@ -196,12 +203,11 @@ p {
 }
 
 .submit-btn {
-  padding: 12px;
+  padding: 8px;
   border-radius: 8px;
   border: none;
-  background-color: rgb(34, 197, 94);
   color: white;
-  font-size: 1rem;
+  font-size: 0.95rem;
   cursor: pointer;
   width: 100%;
 }
@@ -210,14 +216,13 @@ p {
   display: flex;
   flex-direction: column;
   padding: 16px;
-  background-color: rgba(6, 16, 26, 0.562);
+  background-color: var(--bg-color);
 }
 
 .no-transactions {
   color: white;
 }
 
-/* ── Tablet (768px+) ── */
 @media (min-width: 768px) {
   .container > div {
     width: 60vw;
@@ -234,7 +239,6 @@ p {
   }
 }
 
-/* ── Desktop (1024px+) ── */
 @media (min-width: 1024px) {
   .container {
     padding: 32px;
@@ -264,14 +268,14 @@ p {
   }
 
   .submit-btn {
-    font-size: 1.1rem;
-    padding: 14px 40px;
+    font-size: 0.95rem;
+    padding: 10px 20px;
   }
 }
 
-/* ── Large Desktop (1440px+) ── */
+
 @media (min-width: 1440px) {
-  .container > div {
+   .container > div {
     width: 30vw;
   }
 
@@ -298,4 +302,74 @@ p {
   .total-amount {
     font-size: 1.2rem;
   }
+}
+
+.transaction-card {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 16px;
+  margin-top: 10px;
+  background: rgb(14, 14, 14);
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+}
+
+.left {
+  display: flex;
+  flex-direction: column;
+}
+
+.t-title {
+  font-weight: 600;
+}
+
+.t-category {
+  font-size: 12px;
+  color: grey;
+}
+
+.right {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.t-amount {
+  font-weight: bold;
+}
+
+.badge {
+  padding: 4px 10px;
+  border-radius: 15px !important;
+  font-size: 12px;
+
+}
+
+.badge.income {
+  color: green;
+  background-color: rgba(0, 128, 0, 0.1) !important;
+}
+
+.badge.expense {
+   color: red;
+   background-color: rgba(255, 0, 0, 0.1)!important;
+}
+
+.edit-btn {
+  background-color: rgba(0, 132, 255, 0.116) !important;
+}
+
+.box-modal {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 90%;
+  max-width: 400px;
+  background-color: #1e1e1e;
+  border-radius: 16px; 
+  box-shadow: 0px 11px 15px rgba(0,0,0,0.2), 0px 9px 46px rgba(0,0,0,0.12);
+  padding: 24px;
+  outline: none;
 }
