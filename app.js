@@ -22,7 +22,7 @@ function BudgetChart({ income, expense }) {
 }
 
 function StackedDivs() {
-  const [selected, setSelected] = useState(null);
+  const [selected, setSelected] = useState();
   const [budget, setBudget] = useState(() => Number(localStorage.getItem('budget')) || 0);
   const [inputValue, setInputValue] = useState("");
   const [transactions, setTransactions] = useState(() => {
@@ -62,7 +62,8 @@ function StackedDivs() {
   function handleAdd() {
     const amount = Number(inputValue);
     if (!selected) { 
-      alert('Vänligen välj inkomst eller utgift') 
+      alert('Vänligen välj inkomst eller utgift')
+      return
     }
     const newTransaction = { 
       id: crypto.randomUUID(),
