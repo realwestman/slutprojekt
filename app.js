@@ -26,7 +26,7 @@ function StackedDivs() {
   const [budget, setBudget] = useState(() => Number(localStorage.getItem('budget')) || 0);
   const [inputValue, setInputValue] = useState("");
   const [transactions, setTransactions] = useState(() => {
-    const saved = localStorage.getItem('transactions');
+    const saved = localStorage.getItem('transactions'); 
     return saved ? JSON.parse(saved) : [];
   });
   const [title, setTitle] = useState("");
@@ -42,12 +42,34 @@ function StackedDivs() {
   const income = transactions.filter(t => t.type === "income").reduce((sum, t) => sum + t.amount, 0);
   const expense = transactions.filter(t => t.type === "expense").reduce((sum, t) => sum + t.amount, 0);
 
+  const listPosts = transactions.map((t, index) =>
+        <div key={t.id} 
+        className="transaction-card" 
+        onClick={() => openModal(index)}>
+
+          <div className="left">
+          <p className="t-title">{t.title}</p>
+          <p className="t-category">{t.category}</p>
+          </div>
+
+          <div className="right">
+            <p className="t-amount">{t.type === "income" ? "+" : "-"} {t.amount} kr</p>
+            <Button className={`badge ${t.type}`} variant="contained"> {t.type === 'income' ? 'Inkomst' : 'Utgift'}</Button>
+          </div>
+        </div>
+  )
+
   function handleAdd() {
     const amount = Number(inputValue);
     if (!selected) { 
       alert('Vänligen välj inkomst eller utgift') 
     }
-    const newTransaction = { type: selected, amount, title, category };
+    const newTransaction = { 
+      id: crypto.randomUUID(),
+      type: selected, 
+      amount, 
+      title, 
+      category };
     const updatedTransactions = [...transactions, newTransaction];
     setTransactions(updatedTransactions);
     localStorage.setItem("transactions", JSON.stringify(updatedTransactions));
@@ -156,20 +178,7 @@ function StackedDivs() {
         {transactions.length === 0 ? (
           <p className="no-transactions">Inga poster ännu. Lägg till din första transaktion.</p>
         ) : (
-          transactions.map((t, index) => (
-            <div key={index} className="transaction-card" onClick={() => openModal(index)}>
-              <div className="left">
-                <p className="t-title">{t.title}</p>
-                <p className="t-category">{t.category}</p>
-              </div>
-              <div className="right">
-                <p className="t-amount">{t.type === "income" ? "+" : "-"} {t.amount} kr</p>
-                <Button className={`badge ${t.type}`} variant="contained">
-                  {t.type === 'income' ? 'Inkomst' : 'Utgift'}
-                </Button>
-              </div>
-            </div>
-          ))
+          <div>{listPosts}</div>
         )}
       </div>
 
@@ -205,7 +214,7 @@ function StackedDivs() {
 }
 
 function App() {
-  return <StackedDivs />;
+  return <StackedDivs/>;
 }
 
 ReactDOM.createRoot(document.getElementById('root')).render(<App />);
